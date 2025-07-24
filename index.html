@@ -50,14 +50,6 @@
         margin: 15px auto;
     }
 
-    .signature-below-separator {
-        font-family: "Winky Rough", sans-serif;
-        color: #df7b03; /* Mismo color que el texto del separador */
-        font-size: 15px; /* Mismo tamaño de fuente que el texto del separador */
-        margin-top: 10px; /* Espacio entre la línea y el nuevo texto */
-        margin-bottom: 20px; /* Espacio para el contenido de abajo */
-    }
-
     img {
       max-width: 180px;
       height: auto;
@@ -77,6 +69,13 @@
         white-space: normal;
         text-align: center;
         padding: 0 10px;
+    }
+
+    .signature-below-button {
+        font-family: "Winky Rough", sans-serif;
+        color: #df7b03;
+        font-size: 12px;
+        margin-top: 15px;
     }
 
     input {
@@ -150,7 +149,6 @@
         <div class="separator-text">
             leer reglas en la carrd para saber montos permitidos! una vez que cotizas, si querés pedirlo me mandas el link por el grupo así te hablo y coordinamos el pago!
         </div>
-        <p class="signature-below-separator">by. @yeontifys</p>
     </div>
     
     <input type="number" id="usd" placeholder="número con punto, ej: 13.03" step="0.01">
@@ -162,6 +160,7 @@
 
     <p id="aclaracion"></p>
     <div id="error-message"></div>
+    <p class="signature-below-button">by. @yeontifys</p>
   </div>
 
   <script>
