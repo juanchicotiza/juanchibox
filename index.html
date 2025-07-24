@@ -24,47 +24,59 @@
 
     .container {
       background: rgba(255, 255, 255, 0.85);
-      padding: 30px; /* Aumentamos el padding para que el contenido no quede pegado a los bordes de la estrella */
-      border-radius: 15px; /* Mantenemos este por si clip-path no es soportado por algún navegador */
-      box-shadow: 0 0 20px rgba(255, 182, 193, 0.5); /* Sombra un poco más pronunciada */
+      padding: 20px; /* Vuelvo al padding original */
+      border-radius: 15px;
+      box-shadow: 0 0 15px rgba(255, 182, 193, 0.3);
       max-width: 400px;
       width: 85%;
       border: 2px solid #ee9113;
       backdrop-filter: blur(3px);
       text-align: center;
-      
-      /* ESTILOS PARA LA FORMA DE ESTRELLA */
-      -webkit-clip-path: polygon(
-        50% 0%, 
-        61% 35%, 
-        98% 35%, 
-        68% 57%, 
-        79% 91%, 
-        50% 70%, 
-        21% 91%, 
-        32% 57%, 
-        2% 35%, 
-        39% 35%
-      );
-      clip-path: polygon(
-        50% 0%, 
-        61% 35%, 
-        98% 35%, 
-        68% 57%, 
-        79% 91%, 
-        50% 70%, 
-        21% 91%, 
-        32% 57%, 
-        2% 35%, 
-        39% 35%
-      );
-      /* Para asegurar que el contenido se vea bien dentro de la estrella */
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      box-sizing: border-box; /* Para que el padding no afecte el ancho/alto total */
+      position: relative; /* Importante para posicionar la estrella de fondo */
+      overflow: hidden; /* Para que la estrella no se desborde del contenedor si es muy grande */
     }
+
+    /* === ESTILOS PARA LA ESTRELLA DE FONDO === */
+    .container::before {
+        content: '';
+        position: absolute;
+        top: -10px; /* Ajusta la posición para que no corte los bordes del contenido */
+        left: -10px;
+        right: -10px;
+        bottom: -10px;
+        background: #df7b03; /* Color de la estrella */
+        opacity: 0.1; /* Transparencia para que no opaque el contenido */
+        z-index: -1; /* Envía la estrella detrás del contenido */
+        
+        /* La forma de la estrella */
+        -webkit-clip-path: polygon(
+            50% 0%, 
+            61% 35%, 
+            98% 35%, 
+            68% 57%, 
+            79% 91%, 
+            50% 70%, 
+            21% 91%, 
+            32% 57%, 
+            2% 35%, 
+            39% 35%
+        );
+        clip-path: polygon(
+            50% 0%, 
+            61% 35%, 
+            98% 35%, 
+            68% 57%, 
+            79% 91%, 
+            50% 70%, 
+            21% 91%, 
+            32% 57%, 
+            2% 35%, 
+            39% 35%
+        );
+        transform: rotate(0deg); /* Puedes rotarla si quieres */
+    }
+
+    /* === FIN ESTILOS PARA LA ESTRELLA DE FONDO === */
 
     .image-and-info {
         display: flex;
@@ -93,8 +105,8 @@
         white-space: pre-line;
     }
 
-    p { /* Ajuste para el párrafo de juanchicotiza :3 */
-        margin-top: 0; /* Quitamos el margen superior para que no haya doble espacio */
+    p {
+        margin-top: 0;
     }
 
     input {
