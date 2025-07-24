@@ -12,11 +12,10 @@
     }
 
     body {
-      background-image: url('https://i.pinimg.com/originals/69/e2/7c/69e27c177766a3cb153b37682b22186c.gif');
-      background-size: cover;
-      background-position: center;
-      font-family: "Winky Rough", sans-serif;
-      color: #ee9113;
+      background-color: #ffffff; /* ¡Fondo blanco! */
+      background-image: none; /* Eliminamos la imagen de fondo anterior */
+      font-family: "Winky Rough", sans-serif; /* Fuente actualizada */
+      color: #ee9113; /* Color de texto principal */
       display: flex;
       justify-content: center;
       align-items: center;
@@ -26,109 +25,67 @@
       background: rgba(255, 255, 255, 0.85);
       padding: 20px;
       border-radius: 15px;
-      /* box-shadow: 0 0 15px rgba(255, 182, 193, 0.3); */ /* Eliminamos el box-shadow rectangular */
+      box-shadow: 0 0 15px rgba(255, 182, 193, 0.3);
       max-width: 400px;
       width: 85%;
-      border: 2px solid #ee9113;
+      border: 2px solid #ee9113; /* Borde naranja */
       backdrop-filter: blur(3px);
-      text-align: center;
-      position: relative; /* Esencial para posicionar el pseudo-elemento */
-      /* overflow: hidden; */ /* Lo comentamos para que la sombra de la estrella no se recorte si es grande */
+      text-align: center; /* Centrar elementos dentro del contenedor */
     }
 
-    /* === ESTILOS PARA LA ESTRELLA DE FONDO (que ahora tendrá la sombra) === */
-    .container::before {
-        content: '';
-        position: absolute;
-        /* Ajusta estos valores para que la estrella y su sombra rodeen bien el contenedor */
-        top: -20px;
-        left: -20px;
-        right: -20px;
-        bottom: -20px;
-        background: #df7b03; /* Color sólido para la estrella base */
-        opacity: 0.1; /* Transparencia para que no opaque el contenido */
-        z-index: -1; /* Envía la estrella detrás del contenido */
-        
-        /* La forma de la estrella */
-        -webkit-clip-path: polygon(
-            50% 0%, 
-            61% 35%, 
-            98% 35%, 
-            68% 57%, 
-            79% 91%, 
-            50% 70%, 
-            21% 91%, 
-            32% 57%, 
-            2% 35%, 
-            39% 35%
-        );
-        clip-path: polygon(
-            50% 0%, 
-            61% 35%, 
-            98% 35%, 
-            68% 57%, 
-            79% 91%, 
-            50% 70%, 
-            21% 91%, 
-            32% 57%, 
-            2% 35%, 
-            39% 35%
-        );
-        transform: rotate(0deg); /* Puedes rotarla si quieres */
-
-        /* === APLICAMOS LA SOMBRA CON FORMA DE ESTRELLA === */
-        filter: drop-shadow(0 0 15px rgba(255, 182, 193, 0.5)); /* Desplazamiento X, Y, blur, color */
-        /* Puedes ajustar los valores de la sombra: 0 0 (centrada), 15px (difuminado), color (rosa/naranja) */
-    }
-
-    /* === FIN ESTILOS PARA LA ESTRELLA DE FONDO === */
-
-    .image-and-info {
+    .header-content { /* Nuevo contenedor para la imagen, título y el texto del separador */
         display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 20px;
-        margin-bottom: 15px;
-        flex-wrap: wrap;
+        flex-direction: column; /* Apila los elementos verticalmente */
+        align-items: center; /* Centra horizontalmente el contenido */
+        margin-bottom: 15px; /* Espacio debajo de este bloque */
+        position: relative; /* Para el pseudo-elemento del separador */
+    }
+
+    .header-content::after { /* El separador debajo del título */
+        content: '';
+        display: block;
+        width: 80%; /* Ancho de la línea divisoria */
+        height: 2px; /* Grosor de la línea */
+        background-color: #df7b03; /* Color de la línea */
+        margin: 15px auto; /* Centra la línea y da margen superior/inferior */
     }
 
     img {
       max-width: 180px;
       height: auto;
       display: block;
-      border-radius: 15px;
+      border-radius: 15px; /* Bordes redondeados para la imagen */
+      margin-bottom: 10px; /* Un poco de espacio debajo de la imagen */
     }
 
-    .separator-text {
-        flex: 1;
-        min-width: 150px;
-        text-align: left;
-        border-left: 2px solid #df7b03;
-        padding-left: 15px;
-        font-size: 15px;
-        color: #df7b03;
-        white-space: pre-line;
+    .main-title { /* Clase para el título "juanchicotiza :3" */
+        margin-top: 0; /* Elimina margen superior extra */
+        margin-bottom: 0; /* Elimina margen inferior extra */
     }
 
-    p {
-        margin-top: 0;
+    .separator-text { /* Estilos para el texto debajo del título */
+        font-size: 15px; /* Tamaño de fuente para el texto */
+        color: #df7b03; /* Color del texto */
+        white-space: pre-line; /* Para que los saltos de línea del texto funcionen */
+        text-align: center; /* Centra el texto */
+        padding: 0 10px; /* Pequeño padding a los lados */
     }
 
     input {
       padding: 10px 15px;
       font-size: 16px;
-      border: 1.5px solid #ee9113;
+      border: 1.5px solid #ee9113; /* Borde naranja */
       border-radius: 12px;
-      background: #fff;
-      color: #df7b03;
-      width: calc(70% - 30px);
+      background: #fff; /* Fondo blanco para el input para que se vea el texto naranja */
+      color: #df7b03; /* Texto naranja oscuro para el input */
+      width: calc(70% - 30px); /* Ajuste para el padding */
       margin: 8px 0;
       transition: all 0.2s;
     }
 
     input:focus {
       outline: none;
-      box-shadow: 0 0 10px #df7b05;
+      box-shadow: 0 0 10px #df7b05; /* Sombra naranja al enfocar */
     }
 
     .button-and-result {
@@ -142,30 +99,30 @@
     button {
       padding: 10px 25px;
       font-size: 17px;
-      background: #df7b03;
+      background: #df7b03; /* Fondo naranja del botón */
       color: #ffffff;
       border: none;
       border-radius: 15px;
       cursor: pointer;
       transition: all 0.2s;
       white-space: nowrap;
-      font-family: "Winky Rough", sans-serif;
+      font-family: "Winky Rough", sans-serif; /* Fuente del botón igual al HTML */
     }
 
     button:hover {
-      background: #ca6d03;
+      background: #ca6d03; /* Naranja un poco más oscuro al pasar el mouse */
       transform: scale(1.02);
     }
 
     .resultado {
       font-size: 22px;
-      color: #df7b03;
+      color: #df7b03; /* Naranja oscuro para el resultado */
       font-weight: 500;
     }
 
     #aclaracion {
       font-size: 14px;
-      color: #df7b03;
+      color: #df7b03; /* Naranja oscuro para la aclaración */
       margin-top: 10px;
     }
   </style>
@@ -173,16 +130,15 @@
 </head>
 <body>
   <div class="container">
-    <div class="image-and-info">
-        <img src="https://i.pinimg.com/736x/a8/21/e0/a821e07866a77bb3d2d5a38e757a2983.jpg" alt="juanchibox">
+    <div class="header-content"> <img src="https://i.pinimg.com/736x/a8/21/e0/a821e07866a77bb3d2d5a38e757a2983.jpg" alt="juanchibox">
+        <p class="main-title">juanchicotiza :3</p>
         <div class="separator-text">
             leer reglas en la carrd para saber montos permitidos!
-            <br><br>
+            <br>
             una vez que cotizas, si querés pedirlo me mandas el link por el grupo así te hablo y coordinamos el pago!
         </div>
     </div>
     
-    <p>juanchicotiza :3</p>
     <input type="number" id="usd" placeholder="Ej: 13.03" step="0.01">
     
     <div class="button-and-result">
@@ -195,30 +151,38 @@
 
   <script>
     function calcular() {
+      // Valores fijos
       const dolar = 1350;
       const fee = 2.50;
+
+      // Obtener y convertir el valor del input
       const valorInput = document.getElementById("usd").value;
       const valorNumerico = parseFloat(valorInput.replace(',', '.'));
 
+      // Validar entrada
       if (isNaN(valorNumerico) || valorNumerico === 0) {
         document.getElementById("resultado").innerHTML = "ingresá un número";
         document.getElementById("aclaracion").innerHTML = "";
         return;
       }
 
+      // Cálculo
       const subtotal = (valorNumerico + fee) * dolar;
       const totalARS = subtotal; 
       
+      // Mostrar resultado con formato
       document.getElementById("resultado").innerHTML = 
         `$${totalARS.toLocaleString('es-AR', {
           minimumFractionDigits: 2,
           maximumFractionDigits: 2
         })}`;
       
+      // Mensaje simple sin detalles de cálculo
       document.getElementById("aclaracion").innerHTML = 
         "precio sin envío e imp.";
     }
 
+    // Focus al cargar
     document.addEventListener('DOMContentLoaded', () => {
       document.getElementById("usd").focus();
       const disclaimer = document.querySelector("img[alt='www.000webhost.com']");
