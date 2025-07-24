@@ -15,7 +15,7 @@
       background-image: url('https://i.pinimg.com/originals/69/e2/7c/69e27c177766a3cb153b37682b22186c.gif');
       background-size: cover;
       background-position: center;
-      font-family: "Winky Rough", sans-serif;
+      font-family: "Winky Rough", sans-serif; /* Fuente actualizada */
       color: #ee9113; /* Color de texto principal */
       display: flex;
       justify-content: center;
@@ -38,14 +38,11 @@
       max-width: 180px;
       margin: 0 auto 15px;
       display: block;
-      animation: suave 2s ease-in-out infinite;
+      /* Animación 'suave' eliminada de aquí */
+      border-radius: 15px; /* Bordes redondeados para la imagen */
     }
 
-    /* Animación suave existente */
-    @keyframes suave {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-5px); }
-    }
+    /* La animación @keyframes suave se eliminó ya que no se usa */
 
     input {
       padding: 10px 15px;
@@ -64,11 +61,11 @@
       box-shadow: 0 0 10px #df7b05; /* Sombra naranja al enfocar */
     }
 
-    .button-and-result { /* Nuevo estilo para el contenedor del botón y resultado */
-      display: flex; /* Para que los elementos se pongan uno al lado del otro */
-      align-items: center; /* Centrar verticalmente */
-      justify-content: center; /* Centrar horizontalmente */
-      gap: 10px; /* Espacio entre el botón y el resultado */
+    .button-and-result {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
       margin: 10px 0;
     }
 
@@ -81,7 +78,7 @@
       border-radius: 15px;
       cursor: pointer;
       transition: all 0.2s;
-      white-space: nowrap; /* Evita que el texto del botón se rompa */
+      white-space: nowrap;
     }
 
     button:hover {
@@ -93,72 +90,9 @@
       font-size: 22px;
       color: #df7b03; /* Naranja oscuro para el resultado */
       font-weight: 500;
-      /* Eliminamos margin-top ya que ahora está al lado del botón */
     }
 
     #aclaracion {
       font-size: 14px;
       color: #df7b03; /* Naranja oscuro para la aclaración */
       margin-top: 10px;
-    }
-  </style>
-  <link href="https://fonts.googleapis.com/css2?family=Winky+Rough:ital,wght@400;700&display=swap" rel="stylesheet">
-</head>
-<body>
-  <div class="container">
-    <img src="https://i.pinimg.com/1200x/6b/69/a7/6b69a792eea362a4fa7b4e5c00fed3ac.jpg" alt="juanchibox">
-    
-    <p>juanchicotiza :3</p>
-    <input type="number" id="usd" placeholder="Ej: 13.03" step="0.01">
-    
-    <div class="button-and-result"> <button onclick="calcular()">calcular!!</button>
-      <div class="resultado" id="resultado"></div>
-    </div>
-
-    <p id="aclaracion"></p>
-  </div>
-
-  <script>
-    function calcular() {
-      // Valores fijos
-      const dolar = 1350;
-      const fee = 2.50;
-      // const costoAdicional = 1500; // Esta variable no se usa en el cálculo actual
-
-      // Obtener y convertir el valor del input
-      const valorInput = document.getElementById("usd").value;
-      // Reemplazar coma por punto para decimales
-      const valorNumerico = parseFloat(valorInput.replace(',', '.'));
-
-      // Validar entrada
-      if (isNaN(valorNumerico) || valorNumerico === 0) { // Agregamos validación para 0
-        document.getElementById("resultado").innerHTML = "ingresá un número"; // Mensaje más amigable
-        document.getElementById("aclaracion").innerHTML = "";
-        return;
-      }
-
-      // Cálculo
-      const subtotal = (valorNumerico + fee) * dolar;
-      const totalARS = subtotal; 
-      
-      // Mostrar resultado con formato
-      document.getElementById("resultado").innerHTML = 
-        `$${totalARS.toLocaleString('es-AR', {
-          minimumFractionDigits: 2,
-          maximumFractionDigits: 2
-        })}`;
-      
-      // Mensaje simple sin detalles de cálculo
-      document.getElementById("aclaracion").innerHTML = 
-        "precio sin envío e imp."; // Abrevié un poco aquí
-    }
-
-    // Focus al cargar
-    document.addEventListener('DOMContentLoaded', () => {
-      document.getElementById("usd").focus();
-      const disclaimer = document.querySelector("img[alt='www.000webhost.com']");
-      if(disclaimer) disclaimer.remove();
-    });
-  </script>
-</body>
-</html>
