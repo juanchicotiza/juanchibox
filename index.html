@@ -16,7 +16,7 @@
       background-size: cover;
       background-position: center;
       font-family: "Winky Rough", sans-serif;
-      color: #ee9113;
+      color: #ee9113; /* Color de texto principal */
       display: flex;
       justify-content: center;
       align-items: center;
@@ -29,8 +29,9 @@
       box-shadow: 0 0 15px rgba(255, 182, 193, 0.3);
       max-width: 400px;
       width: 85%;
-      border: 2px solid #ee9113;
+      border: 2px solid #ee9113; /* Borde naranja */
       backdrop-filter: blur(3px);
+      text-align: center; /* Centrar elementos dentro del contenedor */
     }
 
     img {
@@ -40,50 +41,64 @@
       animation: suave 2s ease-in-out infinite;
     }
 
+    /* Animación suave existente */
+    @keyframes suave {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-5px); }
+    }
+
     input {
       padding: 10px 15px;
       font-size: 16px;
-      border: 1.5px solid #ee9113;
+      border: 1.5px solid #ee9113; /* Borde naranja */
       border-radius: 12px;
-      background: #ee9113;
-      color: #ff66b2;
-      width: 70%;
+      background: #fff; /* Fondo blanco para el input para que se vea el texto naranja */
+      color: #df7b03; /* Texto naranja oscuro para el input */
+      width: calc(70% - 30px); /* Ajuste para el padding */
       margin: 8px 0;
       transition: all 0.2s;
     }
 
     input:focus {
       outline: none;
-      box-shadow: 0 0 10px #df7b05;
+      box-shadow: 0 0 10px #df7b05; /* Sombra naranja al enfocar */
+    }
+
+    .button-and-result { /* Nuevo estilo para el contenedor del botón y resultado */
+      display: flex; /* Para que los elementos se pongan uno al lado del otro */
+      align-items: center; /* Centrar verticalmente */
+      justify-content: center; /* Centrar horizontalmente */
+      gap: 10px; /* Espacio entre el botón y el resultado */
+      margin: 10px 0;
     }
 
     button {
       padding: 10px 25px;
       font-size: 17px;
-      background: #df7b03;
+      background: #df7b03; /* Fondo naranja del botón */
       color: #ffffff;
       border: none;
       border-radius: 15px;
       cursor: pointer;
       transition: all 0.2s;
-      margin: 10px 0;
+      white-space: nowrap; /* Evita que el texto del botón se rompa */
     }
 
     button:hover {
-      background: #df7b03;
+      background: #ca6d03; /* Naranja un poco más oscuro al pasar el mouse */
       transform: scale(1.02);
     }
 
     .resultado {
-      margin-top: 15px;
       font-size: 22px;
-      color: #df7b03;
+      color: #df7b03; /* Naranja oscuro para el resultado */
       font-weight: 500;
+      /* Eliminamos margin-top ya que ahora está al lado del botón */
     }
 
     #aclaracion {
       font-size: 14px;
-      color: #df7b03;
+      color: #df7b03; /* Naranja oscuro para la aclaración */
       margin-top: 10px;
     }
   </style>
@@ -95,9 +110,11 @@
     
     <p>juanchicotiza :3</p>
     <input type="number" id="usd" placeholder="Ej: 13.03" step="0.01">
-    <button onclick="calcular()">calcular!!</button>
+    
+    <div class="button-and-result"> <button onclick="calcular()">calcular!!</button>
+      <div class="resultado" id="resultado"></div>
+    </div>
 
-    <div class="resultado" id="resultado"></div>
     <p id="aclaracion"></p>
   </div>
 
@@ -106,23 +123,23 @@
       // Valores fijos
       const dolar = 1350;
       const fee = 2.50;
-      const costoAdicional = 1500;
-      
+      // const costoAdicional = 1500; // Esta variable no se usa en el cálculo actual
+
       // Obtener y convertir el valor del input
       const valorInput = document.getElementById("usd").value;
       // Reemplazar coma por punto para decimales
       const valorNumerico = parseFloat(valorInput.replace(',', '.'));
 
       // Validar entrada
-      if (isNaN(valorNumerico)) {
-        document.getElementById("resultado").innerHTML = "no válido";
+      if (isNaN(valorNumerico) || valorNumerico === 0) { // Agregamos validación para 0
+        document.getElementById("resultado").innerHTML = "ingresá un número"; // Mensaje más amigable
         document.getElementById("aclaracion").innerHTML = "";
         return;
       }
 
-      // Cálculo en dos pasos
+      // Cálculo
       const subtotal = (valorNumerico + fee) * dolar;
-      const totalARS = subtotal;
+      const totalARS = subtotal; 
       
       // Mostrar resultado con formato
       document.getElementById("resultado").innerHTML = 
@@ -133,7 +150,7 @@
       
       // Mensaje simple sin detalles de cálculo
       document.getElementById("aclaracion").innerHTML = 
-        "precio sin envio e imp";
+        "precio sin envío e imp."; // Abrevié un poco aquí
     }
 
     // Focus al cargar
