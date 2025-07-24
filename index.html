@@ -12,10 +12,10 @@
     }
 
     body {
-      background-color: #ffffff; /* ¡Fondo blanco! */
-      background-image: none; /* Eliminamos la imagen de fondo anterior */
-      font-family: "Winky Rough", sans-serif; /* Fuente actualizada */
-      color: #ee9113; /* Color de texto principal */
+      background-color: #ffffff;
+      background-image: none;
+      font-family: "Winky Rough", sans-serif;
+      color: #ee9113;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -28,64 +28,64 @@
       box-shadow: 0 0 15px rgba(255, 182, 193, 0.3);
       max-width: 400px;
       width: 85%;
-      border: 2px solid #ee9113; /* Borde naranja */
+      border: 2px solid #ee9113;
       backdrop-filter: blur(3px);
-      text-align: center; /* Centrar elementos dentro del contenedor */
+      text-align: center;
     }
 
-    .header-content { /* Nuevo contenedor para la imagen, título y el texto del separador */
+    .header-content {
         display: flex;
-        flex-direction: column; /* Apila los elementos verticalmente */
-        align-items: center; /* Centra horizontalmente el contenido */
-        margin-bottom: 15px; /* Espacio debajo de este bloque */
-        position: relative; /* Para el pseudo-elemento del separador */
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: 15px;
+        position: relative;
     }
 
-    .header-content::after { /* El separador debajo del título */
+    .header-content::after {
         content: '';
         display: block;
-        width: 80%; /* Ancho de la línea divisoria */
-        height: 2px; /* Grosor de la línea */
-        background-color: #df7b03; /* Color de la línea */
-        margin: 15px auto; /* Centra la línea y da margen superior/inferior */
+        width: 80%;
+        height: 2px;
+        background-color: #df7b03;
+        margin: 15px auto;
     }
 
     img {
       max-width: 180px;
       height: auto;
       display: block;
-      border-radius: 15px; /* Bordes redondeados para la imagen */
-      margin-bottom: 10px; /* Un poco de espacio debajo de la imagen */
+      border-radius: 15px;
+      margin-bottom: 10px;
     }
 
-    .main-title { /* Clase para el título "juanchicotiza :3" */
-        margin-top: 0; /* Elimina margen superior extra */
-        margin-bottom: 0; /* Elimina margen inferior extra */
+    .main-title {
+        margin-top: 0;
+        margin-bottom: 0;
     }
 
-    .separator-text { /* Estilos para el texto debajo del título */
-        font-size: 15px; /* Tamaño de fuente para el texto */
-        color: #df7b03; /* Color del texto */
-        white-space: pre-line; /* Para que los saltos de línea del texto funcionen */
-        text-align: center; /* Centra el texto */
-        padding: 0 10px; /* Pequeño padding a los lados */
+    .separator-text {
+        font-size: 15px;
+        color: #df7b03;
+        white-space: pre-line;
+        text-align: center;
+        padding: 0 10px;
     }
 
     input {
       padding: 10px 15px;
       font-size: 16px;
-      border: 1.5px solid #ee9113; /* Borde naranja */
+      border: 1.5px solid #ee9113;
       border-radius: 12px;
-      background: #fff; /* Fondo blanco para el input para que se vea el texto naranja */
-      color: #df7b03; /* Texto naranja oscuro para el input */
-      width: calc(70% - 30px); /* Ajuste para el padding */
+      background: #fff;
+      color: #df7b03;
+      width: calc(70% - 30px);
       margin: 8px 0;
       transition: all 0.2s;
     }
 
     input:focus {
       outline: none;
-      box-shadow: 0 0 10px #df7b05; /* Sombra naranja al enfocar */
+      box-shadow: 0 0 10px #df7b05;
     }
 
     .button-and-result {
@@ -99,30 +99,30 @@
     button {
       padding: 10px 25px;
       font-size: 17px;
-      background: #df7b03; /* Fondo naranja del botón */
+      background: #df7b03;
       color: #ffffff;
       border: none;
       border-radius: 15px;
       cursor: pointer;
       transition: all 0.2s;
       white-space: nowrap;
-      font-family: "Winky Rough", sans-serif; /* Fuente del botón igual al HTML */
+      font-family: "Winky Rough", sans-serif;
     }
 
     button:hover {
-      background: #ca6d03; /* Naranja un poco más oscuro al pasar el mouse */
+      background: #ca6d03;
       transform: scale(1.02);
     }
 
     .resultado {
       font-size: 22px;
-      color: #df7b03; /* Naranja oscuro para el resultado */
+      color: #df7b03;
       font-weight: 500;
     }
 
     #aclaracion {
       font-size: 14px;
-      color: #df7b03; /* Naranja oscuro para la aclaración */
+      color: #df7b03;
       margin-top: 10px;
     }
   </style>
@@ -130,7 +130,8 @@
 </head>
 <body>
   <div class="container">
-    <div class="header-content"> <img src="https://i.pinimg.com/736x/a8/21/e0/a821e07866a77bb3d2d5a38e757a2983.jpg" alt="juanchibox">
+    <div class="header-content">
+        <img src="https://i.pinimg.com/736x/a8/21/e0/a821e07866a77bb3d2d5a38e757a2983.jpg" alt="juanchibox">
         <p class="main-title">juanchicotiza :3</p>
         <div class="separator-text">
             leer reglas en la carrd para saber montos permitidos!
@@ -151,38 +152,31 @@
 
   <script>
     function calcular() {
-      // Valores fijos
       const dolar = 1350;
       const fee = 2.50;
 
-      // Obtener y convertir el valor del input
       const valorInput = document.getElementById("usd").value;
       const valorNumerico = parseFloat(valorInput.replace(',', '.'));
 
-      // Validar entrada
       if (isNaN(valorNumerico) || valorNumerico === 0) {
         document.getElementById("resultado").innerHTML = "ingresá un número";
         document.getElementById("aclaracion").innerHTML = "";
         return;
       }
 
-      // Cálculo
       const subtotal = (valorNumerico + fee) * dolar;
       const totalARS = subtotal; 
       
-      // Mostrar resultado con formato
       document.getElementById("resultado").innerHTML = 
         `$${totalARS.toLocaleString('es-AR', {
           minimumFractionDigits: 2,
           maximumFractionDigits: 2
         })}`;
       
-      // Mensaje simple sin detalles de cálculo
       document.getElementById("aclaracion").innerHTML = 
         "precio sin envío e imp.";
     }
 
-    // Focus al cargar
     document.addEventListener('DOMContentLoaded', () => {
       document.getElementById("usd").focus();
       const disclaimer = document.querySelector("img[alt='www.000webhost.com']");
