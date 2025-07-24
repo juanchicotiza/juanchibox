@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>juanchicotiza</title>
   <style>
-    /* estilo normal */
     html, body {
       height: 100%;
       margin: 0;
@@ -39,11 +38,6 @@
       margin: 0 auto 15px;
       display: block;
       animation: suave 2s ease-in-out infinite;
-    }
-
-    @keyframes suave {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-5px); }
     }
 
     input {
@@ -110,8 +104,8 @@
   <script>
     function calcular() {
       // Valores fijos
-      const dolar = 1330;
-      const fee = 3.00;
+      const dolar = 1350;
+      const fee = 2.50;
       const costoAdicional = 1500;
       
       // Obtener y convertir el valor del input
@@ -121,25 +115,25 @@
 
       // Validar entrada
       if (isNaN(valorNumerico)) {
-        document.getElementById("resultado").innerHTML = "Ingresa un número válido (´･ω･`)";
+        document.getElementById("resultado").innerHTML = "no válido";
         document.getElementById("aclaracion").innerHTML = "";
         return;
       }
 
       // Cálculo en dos pasos
       const subtotal = (valorNumerico + fee) * dolar;
-      const totalARS = subtotal + costoAdicional;
+      const totalARS = subtotal;
       
       // Mostrar resultado con formato
       document.getElementById("resultado").innerHTML = 
-        `ฅ^•ﻌ•^ฅ $${totalARS.toLocaleString('es-AR', {
+        `$${totalARS.toLocaleString('es-AR', {
           minimumFractionDigits: 2,
           maximumFractionDigits: 2
         })}`;
       
       // Mensaje simple sin detalles de cálculo
       document.getElementById("aclaracion").innerHTML = 
-        "Precio final con todo incluido~ (≧◡≦)";
+        "precio sin envio e imp";
     }
 
     // Focus al cargar
