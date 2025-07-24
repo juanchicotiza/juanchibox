@@ -66,7 +66,7 @@
     .separator-text {
         font-size: 15px;
         color: #df7b03;
-        white-space: pre-line;
+        white-space: normal;
         text-align: center;
         padding: 0 10px;
     }
@@ -125,6 +125,12 @@
       color: #df7b03;
       margin-top: 10px;
     }
+
+    #error-message {
+        font-size: 12px;
+        color: red;
+        margin-top: 5px;
+    }
   </style>
   <link href="https://fonts.googleapis.com/css2?family=Winky+Rough:wght@511&display=swap" rel="stylesheet">
 </head>
@@ -134,9 +140,7 @@
         <img src="https://i.pinimg.com/736x/a8/21/e0/a821e07866a77bb3d2d5a38e757a2983.jpg" alt="juanchibox">
         <p class="main-title">juanchicotiza :3</p>
         <div class="separator-text">
-            leer reglas en la carrd para saber montos permitidos!
-            <br>
-            una vez que cotizas, si querés pedirlo me mandas el link por el grupo así te hablo y coordinamos el pago!
+            leer reglas en la carrd para saber montos permitidos! una vez que cotizas, si querés pedirlo me mandas el link por el grupo así te hablo y coordinamos el pago!
         </div>
     </div>
     
@@ -148,6 +152,7 @@
     </div>
 
     <p id="aclaracion"></p>
+    <div id="error-message"></div>
   </div>
 
   <script>
@@ -157,9 +162,13 @@
 
       const valorInput = document.getElementById("usd").value;
       const valorNumerico = parseFloat(valorInput.replace(',', '.'));
+      
+      const errorMessageDiv = document.getElementById("error-message");
+      errorMessageDiv.textContent = "";
 
       if (isNaN(valorNumerico) || valorNumerico === 0) {
-        document.getElementById("resultado").innerHTML = "ingresá un número";
+        errorMessageDiv.textContent = "ingresa el número con punto";
+        document.getElementById("resultado").innerHTML = "";
         document.getElementById("aclaracion").innerHTML = "";
         return;
       }
