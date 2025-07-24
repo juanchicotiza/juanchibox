@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>juanchicotiza</title>
   <style>
-    /* Estilos kawaii con tonos naranjas */
+    /* estilo normal */
     html, body {
       height: 100%;
       margin: 0;
@@ -13,11 +13,11 @@
     }
 
     body {
-      background-image: url('https://i.pinimg.com/1200x/1a/97/aa/1a97aabfd94ebdf3416bcecf9a07db56.jpg');
+      background-image: url('https://i.pinimg.com/originals/74/5f/56/745f56f8adbde8bdea1f89b2f8400d67.gif');
       background-size: cover;
       background-position: center;
-      font-family: 'Comic Neue', cursive;
-      color: #FF8C00; /* Naranja oscuro para el texto principal */
+      font-family: "Winky Rough", sans-serif;
+      color: #ee9113;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -27,10 +27,10 @@
       background: rgba(255, 255, 255, 0.85);
       padding: 20px;
       border-radius: 15px;
-      box-shadow: 0 0 15px rgba(255, 165, 0, 0.3); /* Sombra naranja */
+      box-shadow: 0 0 15px rgba(255, 182, 193, 0.3);
       max-width: 400px;
       width: 85%;
-      border: 2px solid #FFA500; /* Borde naranja */
+      border: 2px solid #ee9113;
       backdrop-filter: blur(3px);
     }
 
@@ -49,10 +49,10 @@
     input {
       padding: 10px 15px;
       font-size: 16px;
-      border: 1.5px solid #FFA500; /* Borde naranja */
+      border: 1.5px solid #ee9113;
       border-radius: 12px;
-      background: #FFF8E1; /* Fondo claro para el input */
-      color: #FF4500; /* Naranja rojizo para el texto del input */
+      background: #ee9113;
+      color: #ff66b2;
       width: 70%;
       margin: 8px 0;
       transition: all 0.2s;
@@ -60,13 +60,13 @@
 
     input:focus {
       outline: none;
-      box-shadow: 0 0 10px #FFA500; /* Sombra al enfocar naranja */
+      box-shadow: 0 0 10px #df7b05;
     }
 
     button {
       padding: 10px 25px;
       font-size: 17px;
-      background: #FFA500; /* Fondo naranja del botón */
+      background: #df7b03;
       color: #ffffff;
       border: none;
       border-radius: 15px;
@@ -76,32 +76,32 @@
     }
 
     button:hover {
-      background: #FF8C00; /* Naranja más oscuro al pasar el mouse */
+      background: #df7b03;
       transform: scale(1.02);
     }
 
     .resultado {
       margin-top: 15px;
       font-size: 22px;
-      color: #FF4500; /* Naranja rojizo para el resultado */
+      color: #df7b03;
       font-weight: 500;
     }
 
     #aclaracion {
       font-size: 14px;
-      color: #FF8C00; /* Naranja oscuro para la aclaración */
+      color: #df7b03;
       margin-top: 10px;
     }
   </style>
-  <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Winky+Rough:ital,wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
   <div class="container">
-    <img src="https://www.canva.com/design/DAGuCe4j4Xs/SVvfQvO2MFJxR9ZEkGTq7Q/view?utm_content=DAGuCe4j4Xs&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=ha25c87da6f" alt="juanchi">
+    <img src="https://i.pinimg.com/originals/c6/cd/91/c6cd91fb16116031aae8cd79c35e7338.gif" alt="fruticaja">
     
     <p>juanchicotiza :3</p>
-    <input type="number" id="usd" placeholder="Ej: 10.50" step="0.01">
-    <button onclick="calcular()">Calcular :3</button>
+    <input type="number" id="usd" placeholder="Ej: 13.03" step="0.01">
+    <button onclick="calcular()">calcular!!</button>
 
     <div class="resultado" id="resultado"></div>
     <p id="aclaracion"></p>
@@ -110,8 +110,9 @@
   <script>
     function calcular() {
       // Valores fijos
-      const dolar = 1350;
-      const fee = 2.50;
+      const dolar = 1330;
+      const fee = 3.00;
+      const costoAdicional = 1500;
       
       // Obtener y convertir el valor del input
       const valorInput = document.getElementById("usd").value;
@@ -120,31 +121,30 @@
 
       // Validar entrada
       if (isNaN(valorNumerico)) {
-        document.getElementById("resultado").innerHTML = "el número no es válido";
+        document.getElementById("resultado").innerHTML = "Ingresa un número válido (´･ω･`)";
         document.getElementById("aclaracion").innerHTML = "";
         return;
       }
 
       // Cálculo en dos pasos
       const subtotal = (valorNumerico + fee) * dolar;
-      const totalARS = subtotal; // Aquí ya tenías el cálculo completo, solo se asigna a la variable
+      const totalARS = subtotal + costoAdicional;
       
       // Mostrar resultado con formato
-      document.getElementById("resultado").innerHTML =
-        `$${totalARS.toLocaleString('es-AR', {
+      document.getElementById("resultado").innerHTML = 
+        `ฅ^•ﻌ•^ฅ $${totalARS.toLocaleString('es-AR', {
           minimumFractionDigits: 2,
           maximumFractionDigits: 2
         })}`;
       
       // Mensaje simple sin detalles de cálculo
-      document.getElementById("aclaracion").innerHTML =
-        "precio sin envío e impuestos";
+      document.getElementById("aclaracion").innerHTML = 
+        "Precio final con todo incluido~ (≧◡≦)";
     }
 
     // Focus al cargar
     document.addEventListener('DOMContentLoaded', () => {
       document.getElementById("usd").focus();
-      // Esto remueve un posible disclaimer que a veces aparece en 000webhost
       const disclaimer = document.querySelector("img[alt='www.000webhost.com']");
       if(disclaimer) disclaimer.remove();
     });
