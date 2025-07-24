@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>juanchicotiza</title>
+  <style>
+    /* Estilos kawaii con tonos naranjas */
+    html, body {
+      height: 100%;
+      margin: 0;
+      overflow: hidden;
+    }
+
+    body {
+      background-image: url('https://i.pinimg.com/1200x/1a/97/aa/1a97aabfd94ebdf3416bcecf9a07db56.jpg');
+      background-size: cover;
+      background-position: center;
+      font-family: 'Comic Neue', cursive;
+      color: #FF8C00; /* Naranja oscuro para el texto principal */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .container {
+      background: rgba(255, 255, 255, 0.85);
+      padding: 20px;
+      border-radius: 15px;
+      box-shadow: 0 0 15px rgba(255, 165, 0, 0.3); /* Sombra naranja */
+      max-width: 400px;
+      width: 85%;
+      border: 2px solid #FFA500; /* Borde naranja */
+      backdrop-filter: blur(3px);
+    }
+
+    img {
+      max-width: 180px;
+      margin: 0 auto 15px;
+      display: block;
+      animation: suave 2s ease-in-out infinite;
+    }
+
+    @keyframes suave {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-5px); }
+    }
+
+    input {
+      padding: 10px 15px;
+      font-size: 16px;
+      border: 1.5px solid #FFA500; /* Borde naranja */
+      border-radius: 12px;
+      background: #FFF8E1; /* Fondo claro para el input */
+      color: #FF4500; /* Naranja rojizo para el texto del input */
+      width: 70%;
+      margin: 8px 0;
+      transition: all 0.2s;
+    }
+
+    input:focus {
+      outline: none;
+      box-shadow: 0 0 10px #FFA500; /* Sombra al enfocar naranja */
+    }
+
+    button {
+      padding: 10px 25px;
+      font-size: 17px;
+      background: #FFA500; /* Fondo naranja del botón */
+      color: #ffffff;
+      border: none;
+      border-radius: 15px;
+      cursor: pointer;
+      transition: all 0.2s;
+      margin: 10px 0;
+    }
+
+    button:hover {
+      background: #FF8C00; /* Naranja más oscuro al pasar el mouse */
+      transform: scale(1.02);
+    }
+
+    .resultado {
+      margin-top: 15px;
+      font-size: 22px;
+      color: #FF4500; /* Naranja rojizo para el resultado */
+      font-weight: 500;
+    }
+
+    #aclaracion {
+      font-size: 14px;
+      color: #FF8C00; /* Naranja oscuro para la aclaración */
+      margin-top: 10px;
+    }
+  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="container">
+    <img src="https://www.canva.com/design/DAGuCe4j4Xs/SVvfQvO2MFJxR9ZEkGTq7Q/view?utm_content=DAGuCe4j4Xs&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=ha25c87da6f" alt="juanchi">
+    
+    <p>juanchicotiza :3</p>
+    <input type="number" id="usd" placeholder="Ej: 10.50" step="0.01">
+    <button onclick="calcular()">Calcular :3</button>
+
+    <div class="resultado" id="resultado"></div>
+    <p id="aclaracion"></p>
+  </div>
+
+  <script>
+    function calcular() {
+      // Valores fijos
+      const dolar = 1350;
+      const fee = 2.50;
+      
+      // Obtener y convertir el valor del input
+      const valorInput = document.getElementById("usd").value;
+      // Reemplazar coma por punto para decimales
+      const valorNumerico = parseFloat(valorInput.replace(',', '.'));
+
+      // Validar entrada
+      if (isNaN(valorNumerico)) {
+        document.getElementById("resultado").innerHTML = "el número no es válido";
+        document.getElementById("aclaracion").innerHTML = "";
+        return;
+      }
+
+      // Cálculo en dos pasos
+      const subtotal = (valorNumerico + fee) * dolar;
+      const totalARS = subtotal; // Aquí ya tenías el cálculo completo, solo se asigna a la variable
+      
+      // Mostrar resultado con formato
+      document.getElementById("resultado").innerHTML =
+        `$${totalARS.toLocaleString('es-AR', {
+          minimumFractionDigits: 2,
+          maximumFractionDigits: 2
+        })}`;
+      
+      // Mensaje simple sin detalles de cálculo
+      document.getElementById("aclaracion").innerHTML =
+        "precio sin envío e impuestos";
+    }
+
+    // Focus al cargar
+    document.addEventListener('DOMContentLoaded', () => {
+      document.getElementById("usd").focus();
+      // Esto remueve un posible disclaimer que a veces aparece en 000webhost
+      const disclaimer = document.querySelector("img[alt='www.000webhost.com']");
+      if(disclaimer) disclaimer.remove();
+    });
+  </script>
+</body>
+</html>
