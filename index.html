@@ -24,27 +24,28 @@
 
     .container {
       background: rgba(255, 255, 255, 0.85);
-      padding: 20px; /* Vuelvo al padding original */
+      padding: 20px;
       border-radius: 15px;
-      box-shadow: 0 0 15px rgba(255, 182, 193, 0.3);
+      /* box-shadow: 0 0 15px rgba(255, 182, 193, 0.3); */ /* Eliminamos el box-shadow rectangular */
       max-width: 400px;
       width: 85%;
       border: 2px solid #ee9113;
       backdrop-filter: blur(3px);
       text-align: center;
-      position: relative; /* Importante para posicionar la estrella de fondo */
-      overflow: hidden; /* Para que la estrella no se desborde del contenedor si es muy grande */
+      position: relative; /* Esencial para posicionar el pseudo-elemento */
+      /* overflow: hidden; */ /* Lo comentamos para que la sombra de la estrella no se recorte si es grande */
     }
 
-    /* === ESTILOS PARA LA ESTRELLA DE FONDO === */
+    /* === ESTILOS PARA LA ESTRELLA DE FONDO (que ahora tendrá la sombra) === */
     .container::before {
         content: '';
         position: absolute;
-        top: -10px; /* Ajusta la posición para que no corte los bordes del contenido */
-        left: -10px;
-        right: -10px;
-        bottom: -10px;
-        background: #df7b03; /* Color de la estrella */
+        /* Ajusta estos valores para que la estrella y su sombra rodeen bien el contenedor */
+        top: -20px;
+        left: -20px;
+        right: -20px;
+        bottom: -20px;
+        background: #df7b03; /* Color sólido para la estrella base */
         opacity: 0.1; /* Transparencia para que no opaque el contenido */
         z-index: -1; /* Envía la estrella detrás del contenido */
         
@@ -74,6 +75,10 @@
             39% 35%
         );
         transform: rotate(0deg); /* Puedes rotarla si quieres */
+
+        /* === APLICAMOS LA SOMBRA CON FORMA DE ESTRELLA === */
+        filter: drop-shadow(0 0 15px rgba(255, 182, 193, 0.5)); /* Desplazamiento X, Y, blur, color */
+        /* Puedes ajustar los valores de la sombra: 0 0 (centrada), 15px (difuminado), color (rosa/naranja) */
     }
 
     /* === FIN ESTILOS PARA LA ESTRELLA DE FONDO === */
