@@ -34,20 +34,20 @@
     }
 
     .header-content {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        margin-bottom: 15px;
-        position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-bottom: 15px;
+      position: relative;
     }
 
     .header-content::after {
-        content: '';
-        display: block;
-        width: 80%;
-        height: 2px;
-        background-color: #df7b03;
-        margin: 15px auto;
+      content: '';
+      display: block;
+      width: 80%;
+      height: 2px;
+      background-color: #df7b03;
+      margin: 15px auto;
     }
 
     img {
@@ -59,23 +59,23 @@
     }
 
     .main-title {
-        margin-top: 0;
-        margin-bottom: 0;
+      margin-top: 0;
+      margin-bottom: 0;
     }
 
     .separator-text {
-        font-size: 15px;
-        color: #df7b03;
-        white-space: normal;
-        text-align: center;
-        padding: 0 10px;
+      font-size: 15px;
+      color: #df7b03;
+      white-space: normal;
+      text-align: center;
+      padding: 0 10px;
     }
 
     .signature-below-button {
-        font-family: "Winky Rough", sans-serif;
-        color: #df7b03;
-        font-size: 12px;
-        margin-top: 15px;
+      font-family: "Winky Rough", sans-serif;
+      color: #df7b03;
+      font-size: 12px;
+      margin-top: 15px;
     }
 
     input {
@@ -134,9 +134,9 @@
     }
 
     #error-message {
-        font-size: 12px;
-        color: red;
-        margin-top: 5px;
+      font-size: 12px;
+      color: red;
+      margin-top: 5px;
     }
   </style>
   <link href="https://fonts.googleapis.com/css2?family=Winky+Rough:wght@511&display=swap" rel="stylesheet">
@@ -144,11 +144,11 @@
 <body>
   <div class="container">
     <div class="header-content">
-        <img src="https://i.pinimg.com/736x/a8/21/e0/a821e07866a77bb3d2d5a38e757a2983.jpg" alt="juanchibox">
-        <p class="main-title">juanchicotiza :3</p>
-        <div class="separator-text">
-leer la carrd para saber montos permitidos! para pedir, me @ por el grupo para pasarme por priv :)
-        </div>
+      <img src="https://i.pinimg.com/736x/a8/21/e0/a821e07866a77bb3d2d5a38e757a2983.jpg" alt="juanchibox">
+      <p class="main-title">juanchicotiza :3</p>
+      <div class="separator-text">
+        leer la carrd para saber montos permitidos! para pedir, me @ por el grupo para pasarme por priv :)
+      </div>
     </div>
     
     <input type="number" id="usd" placeholder="número con punto, ej: 13.03" step="0.01">
@@ -182,12 +182,12 @@ leer la carrd para saber montos permitidos! para pedir, me @ por el grupo para p
       }
 
       const subtotal = (valorNumerico + fee) * dolar;
-      const totalARS = subtotal; 
+      const totalARS = Math.round(subtotal);
       
       document.getElementById("resultado").innerHTML = 
         `$${totalARS.toLocaleString('es-AR', {
-          minimumFractionDigits: 2,
-          maximumFractionDigits: 2
+          minimumFractionDigits: 0,
+          maximumFractionDigits: 0
         })}`;
       
       document.getElementById("aclaracion").innerHTML = 
