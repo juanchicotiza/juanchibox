@@ -165,8 +165,7 @@
 
   <script>
     function calcular() {
-      const dolar = 1500;
-      const fee = 3.5;
+      const dolar = 1550;
 
       const valorInput = document.getElementById("usd").value;
       const valorNumerico = parseFloat(valorInput.replace(',', '.'));
@@ -181,7 +180,7 @@
         return;
       }
 
-      const subtotal = (valorNumerico + fee) * dolar;
+      const subtotal = (valorNumerico * dolar);
       const totalARS = Math.round(subtotal);
       
       document.getElementById("resultado").innerHTML = 
@@ -191,7 +190,7 @@
         })}`;
       
       document.getElementById("aclaracion").innerHTML = 
-        "precio sin envío e imp.";
+        "precio únicamente del link/producto! falta envío e impuestos al país";
     }
 
     document.addEventListener('DOMContentLoaded', () => {
@@ -202,3 +201,4 @@
   </script>
 </body>
 </html>
+
