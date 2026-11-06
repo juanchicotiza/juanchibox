@@ -151,7 +151,7 @@
       </div>
     </div>
     
-    <input type="number" id="usd" placeholder="número con punto, ej: 13.03" step="0.01">
+    <input type="number" id="usd" placeholder="número con punto y en USD, ej: 13.03" step="0.01">
     
     <div class="button-and-result">
       <button onclick="calcular()">calcular!!</button>
@@ -174,7 +174,7 @@
       errorMessageDiv.textContent = "";
 
       if (isNaN(valorNumerico) || valorNumerico === 0) {
-        errorMessageDiv.textContent = "ingresa el número con punto";
+        errorMessageDiv.textContent = "ingresa el número con punto y en usd";
         document.getElementById("resultado").innerHTML = "";
         document.getElementById("aclaracion").innerHTML = "";
         return;
